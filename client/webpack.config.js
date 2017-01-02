@@ -1,3 +1,4 @@
+const path = require('path');
 module.exports = {
   entry: [
     './app/Index.js'
@@ -8,13 +9,29 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['babel'],
+        include: path.join(__dirname, 'app'),
+        exclude: /node_modules/
+      },
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        include: path.join(__dirname, 'app'),
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/, 
+        loaders: [
+          'style-loader',
+          'css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]',
+          'postcss-loader'
+        ],
+        exclude: '/app/assets/'
       }
-    }]
+    ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']

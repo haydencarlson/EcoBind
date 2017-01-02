@@ -1,12 +1,13 @@
-const express = require("express");
-const app = express();
+const app = require('express')();
+const server = require('http').Server(app);
+const io = require('socket.io')(server, {'reconnection': true});
+const socket_server = require('./sockets')(io);
 
-app.get("/", (req, res) => {
-	console.log("here");
-	res.send("hello");
+app.use('/', function(req, res, next) {
+	res.send('hello');
 });
 
-app.listen(3000, (err) => {
+server.listen(3000, (err) => {
   if (err) { console.log(err) };
 
   console.log("Server listening on port 3000");

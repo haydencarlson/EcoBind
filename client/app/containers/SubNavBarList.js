@@ -6,33 +6,35 @@ import SubNavBarListItem from '../components/SubNavBarListItem.js';
 
 class SubNavBarList extends Component {
 
-  renderList() {
-    const SubNavItems = [
-      {
-        name: "name",
-        component: <component />
-      },
-      {
-        name: "Client",
-        component: <component />
-      },
-      {
-        name: "Pipelines",
-        component: <component />
-      },
-      {
-        name: "Saftey",
-        component: <component />
-      }
-    ];
+  renderList(currentTab) {
+    var Data = {
+      Information: [ "Safety", "Soil Report", "Pipelines", "Irrigation" ],
+      Financial: [ "Salary", "Hours" ],
+      Contracts: [ "People", "Contracts" ],
+      Schedule: [ "Scheduled Hours", "Holidays" ]
+    }
+  
+    return Data[currentTab].map((item, index) => {
+      return (
+        <SubNavBarListItem key={index} SubNavItemName={item} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
+      )
+    });  
   }
 
   render() {
-    return (
-      <ul>
-        {this.renderList()}
-      </ul>
-    )
+    if (this.props.currentTab != "") {
+      return (
+        <ul>
+          {this.renderList(this.props.currentTab)}
+        </ul>
+      )
+    } else {
+        return (
+          <ul>
+
+          </ul>
+        )
+      }
   };
 };
 
@@ -42,5 +44,13 @@ const mapStateToProps = function (state) {
     });
   }
 
+const mapDispatchToProps = function (dispatch) {
+  return {
+    changeSubTab: (subTab) => {
+      dispatch(actions.changeSubTab(subTab));
+    }
+  }
+}
+
   
-export default connect(mapStateToProps, null)(SubNavBarList);
+export default connect(mapStateToProps, mapDispatchToProps)(SubNavBarList);

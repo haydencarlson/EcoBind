@@ -13,10 +13,9 @@ class NavBarList extends Component {
       "Schedule"
     ];
 
-    return NavItems.map((item) => {
-
+    return NavItems.map((item, index) => {
       return (
-        <NavBarListItem NavItemName={item} handleClick={(tab) => this.props.changeTab.bind(this)(tab)} />
+        <NavBarListItem key={index} NavItemName={item} handleClick={(tab) => this.props.changeTab.bind(this)(tab)} />
       )
     });
   }

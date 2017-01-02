@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import NavBarList from '../containers/NavBarList.js';
+import DocumentsLoader from '../containers/DocumentsLoader.js';
 
 class DocumentLoader_Partial extends Component {
   render() {
     return (
       <div>
-
+      	<DocumentsLoader />
       </div>
     );
   };
