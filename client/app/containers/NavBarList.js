@@ -15,7 +15,7 @@ class NavBarList extends Component {
 
     return NavItems.map((item, index) => {
       return (
-        <NavBarListItem key={index} NavItemName={item} handleClick={(tab) => this.props.changeTab.bind(this)(tab)} />
+        <NavBarListItem key={index} NavItemName={item} handleClick={(tab) => this.props.changeTab(tab)} />
       )
     });
   }

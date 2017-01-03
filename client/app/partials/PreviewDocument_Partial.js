@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import SubNavBarList from '../containers/SubNavBarList.js';
+import PreviewDocuments from '../containers/PreviewDocuments.js';
 
 class SubNavBar_Partial extends Component {
   render() {
     return (
-      <nav id="SubNavBar">
-      	<SubNavBarList/>
+      <nav>
+      	<PreviewDocuments/>
       </nav>
     );
   };

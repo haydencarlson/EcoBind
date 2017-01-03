@@ -5,30 +5,55 @@ import * as actions from '../actions/index.js';
 import DocumentsLoaderItem from '../components/DocumentsLoaderItem.js';
 class DocumentsLoader extends Component {
 
-	renderSavedDocs() {
-		const SavedDocuments = [
-		  { name: "SoilReportDay4", url: "https://ecobind.000webhostapp.com/testDoc.doc" } ,
-		  { name: "SoilReportDay5", url: "https://ecobind.000webhostapp.com/testDoc.doca" } 
-		]
+	renderSavedDocs(currentSubTab) {
+		const SavedDocuments = {
+		  "Soil Report": [ 
+			  { name: "SoilReportDay4", url: "https://ecobind.000webhostapp.com/testDoc.doc" },
+			  { name: "SoilReportDay5", url: "https://ecobind.000webhostapp.com/testDoc.doc" } 
+		 	],
+		  Safety: [
+		  	{ name: "Safety Hazards", url: "https://ecobind.000webhostappp.com/safetyhazards2016.doc"}
+		  ]
+		}
 	
-		return SavedDocuments.map((doc, index) => {
+		return SavedDocuments[currentSubTab].map((doc, index) => {
+			console.log("doc",doc);
 			return (
 				<div>
-					<DocumentsLoaderItem key={index} name={doc.name} url={doc.url}/>
+					<DocumentsLoaderItem key={index} name={doc.name} url={doc.url} handleClick={(url) => this.props.selectDocument(url)}/>
 				</div>
 			)
 		});
 	}
-  
 
   render() {
-    return (
-      <div>
-      	{this.renderSavedDocs()}
-      </div>
-    )
+  	if (this.props.currentSubTab != "") {
+  		return (
+	      <div>
+	      	{this.renderSavedDocs(this.props.currentSubTab)}
+	      </div>
+    	)
+  	} else {
+  		return (
+  			<div>
+
+  			</div>
+  		)
+  	}
   };
 };
 
+const mapDispatchToProps = function (dispatch) {
+	return {
+		selectDocument: (doc) => {
+			dispatch(actions.selectDocument(doc));
+		}
+	}
+}
 
-export default connect(null, null)(DocumentsLoader);
+const mapStateToProps = function (state) {
+  return ({
+    currentSubTab: state.changeSubTab
+  });
+ }
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentsLoader);

@@ -4,7 +4,7 @@ import NavBarList from '../containers/NavBarList.js';
 class Navbar_Partial extends Component {
   render() {
     return (
-      <nav>
+      <nav id="NavBar">
       	<NavBarList />
       </nav>
     );
