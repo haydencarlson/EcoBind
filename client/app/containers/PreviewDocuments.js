@@ -21,7 +21,8 @@ class DocumentsLoader extends Component {
   	if (this.props.selectedDocument != "") {
   		return (
 	  		<div>
-	  			<iframe src={'https://view.officeapps.live.com/op/embed.aspx?src=' + this.props.selectedDocument} width='1366px' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
+	  			<iframe id="PreviewiFrame" src={'https://view.officeapps.live.com/op/embed.aspx?src=' + this.props.selectedDocument} >
+	  			</iframe>
 	  		</div>
   		)	
   	} else {

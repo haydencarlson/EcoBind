@@ -4,10 +4,11 @@ class DocumentsLoaderItem extends Component {
   render() {
     return (
     	<ul>
-    		<li onClick={() => this.props.handleClick(this.props.url)}>
-	    		{this.props.name}
-	    		{this.props.url}
-	    		<a href={this.props.url}> Open Document </a>
+    		<li style={{"listStyle": "none"}} onClick={() => this.props.handleClick(this.props.url)}>
+          <div id="aDocument">
+            <img id="wordDocImg" src="http://i.imgur.com/ZhgKSpt.png"/>
+	    		 {this.props.name}
+          </div>
     		</li>
     	</ul>
     );

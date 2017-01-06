@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import PreviewDocuments from '../containers/PreviewDocuments.js';
 
-class SubNavBar_Partial extends Component {
+class PreviewDocuments_Partial extends Component {
   render() {
     return (
-      <nav>
+      <div id="PreviewDocumentsDiv">
       	<PreviewDocuments/>
-      </nav>
+      </div>
     );
   };
 };
 
 
-export default SubNavBar_Partial;
+export default PreviewDocuments_Partial;

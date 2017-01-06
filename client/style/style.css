@@ -1,3 +1,6 @@
+* {
+	box-sizing:border-box;
+}
 body {
 	background-color: #ccc;
 }
@@ -39,12 +42,60 @@ body {
 	text-align:center;
 	padding: 0;
 }
-#DocumentLoader {
+#DocumentLoaderBox {
+	margin-left: 50px;
+	margin-right:50px;
 	background-color: white;
+	padding-top:40px;
 	position: absolute;
 	left: 300px;
 	bottom:0px;
 	margin-bottom: 30px;
-	height:300px;
-	width:300px;
+	height: 500px;
+	width:450px;
+	border-radius:3px;
+	border: 1px solid black;
+}
+#DocumentLoaderSpan {
+	font-family: Montserrat;
+	font-size: 20px;
+	position: absolute;
+	bottom:435px;
+	left:350px;
+}
+#DocumentMenuBar {
+	position: absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	height:35px;
+	background-color: #1992cc;
+	border-bottom: 1px solid black;
+}
+#PreviewiFrame {
+	pointer-events:none;
+	position:absolute;
+	right: 0px;
+	top: 0px;
+	border:none;
+	height: 100vh;
+}
+#OpenButton {
+	color:white;
+	line-height: 35px;
+	font-family:montserrat;
+	padding-left:3px;
+}
+#OpenButtonContainer {
+	padding-left: 5px;
+	color:white;
+}
+#wordDocImg {
+	width:50px;
+	display:block;
+	margin-left:25px;
+}
+#aDocument {
+	float:left;
+	padding-left:10px;
 }
