@@ -22,7 +22,7 @@ class NavBarList extends Component {
 
   render() {
     return (
-      <ul>
+      <ul id="NavBarUl">
         {this.renderList()}
       </ul>
     )

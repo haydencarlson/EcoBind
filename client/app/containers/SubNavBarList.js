@@ -24,7 +24,7 @@ class SubNavBarList extends Component {
   render() {
     if (this.props.currentTab != "") {
       return (
-        <ul>
+        <ul id="SubNavBarUl">
           {this.renderList(this.props.currentTab)}
         </ul>
       )
