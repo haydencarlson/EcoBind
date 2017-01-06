@@ -5,7 +5,7 @@ class TemplatesSavedItem extends Component {
     return (
     	<ul>
     		<li style={{"listStyle": "none"}} onClick={() => this.props.handleClick(this.props.url)}>
-          <div id="aTemplate">
+          <div >
             <img id="wordDocImg" src="http://i.imgur.com/ZhgKSpt.png"/>
 	    		 {this.props.name}
           </div>

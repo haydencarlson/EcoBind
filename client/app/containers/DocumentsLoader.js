@@ -18,7 +18,7 @@ class DocumentsLoader extends Component {
 	
 		return SavedDocuments[currentSubTab].map((doc, index) => {
 			return (
-				<div>
+				<div key={index}>
 					<DocumentsLoaderItem key={index} name={doc.name} url={doc.url} handleClick={(url) => this.props.selectDocument(url)}/>
 				</div>
 			)
@@ -35,7 +35,7 @@ class DocumentsLoader extends Component {
   	} else {
   		return (
   			<div id="DocumentLoaderNoTab">
-  			Open a Tab to view documents for that section
+  			Open a Tab to view documents
   			</div>
   		)
   	}

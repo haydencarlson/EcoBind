@@ -27,7 +27,10 @@ class DocumentsLoader extends Component {
   		)	
   	} else {
   		return (
-  			<div></div>
+  			<div>
+  				<iframe id="iFramePlaceHolder" src="https://blankslate.io/">
+  				</iframe>
+  			</div>
   		)
   	}
   };

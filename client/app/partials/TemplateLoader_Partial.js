@@ -5,6 +5,7 @@ class TemplaterLoader_Partial extends Component {
   render() {
     return (
 			<div id="TemplaterLoaderBox">
+				<span id="TemplateLoaderSpan">Templates</span>
 				<OpenDocumentMenu/>
 	    	<TemplaterLoader/>
 	    </div>

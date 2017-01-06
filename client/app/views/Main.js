@@ -3,7 +3,7 @@ import NavBar from '../partials/NavBar_Partial.js'
 import SubNavBar from '../partials/SubNavBar_Partial.js';
 import DocumentLoader from '../partials/DocumentLoader_Partial.js';
 import DocumentPreview from '../partials/PreviewDocument_Partial.js';
-import TemplateLoader_Partial from '../partials/TemplateLoader_Partial.js';
+import TemplateLoader from '../partials/TemplateLoader_Partial.js';
 class Main extends Component {
   render() {
     return (
@@ -15,8 +15,8 @@ class Main extends Component {
     			<NavBar id="NavBar"/>
     		</div>
     		<SubNavBar/>
-        <TemplateLoader_Partial/>
         <div id="DocumentManager">
+        	<TemplateLoader/>
 		      <DocumentLoader/>
         </div>
     		<DocumentPreview/>

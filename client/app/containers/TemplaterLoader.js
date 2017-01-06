@@ -15,10 +15,10 @@ class TemplaterLoader extends Component {
 		  ]
 		}
 	
-		return SavedTemplates[currentSubTab].map((doc, index) => {
+		return SavedTemplates[currentSubTab].map((template, index) => {
 			return (
-				<div>
-					<TemplatesSavedItem key={index} name={doc.name} url={doc.url} handleClick={(url) => this.props.selectDocument(url)}/>
+				<div key={index}>
+					<TemplatesSavedItem name={template.name} url={template.url} handleClick={(url) => this.props.selectDocument(url)}/>
 				</div>
 			)
 		});
@@ -34,7 +34,7 @@ class TemplaterLoader extends Component {
   	} else {
   		return (
   			<div id="TemplaterLoaderNoTab">
-  			Open a Tab to view templates for that section
+  			Open a Tab to view templates
   			</div>
   		)
   	}

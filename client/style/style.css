@@ -91,6 +91,15 @@ body {
 	border:none;
 	height: 100vh;
 }
+#iFramePlaceHolder {
+	pointer-events:none;
+	position:absolute;
+	right: 0px;
+	top: 0px;
+	width:978px;
+	border:none;
+	height: 100vh;
+}
 #OpenButton {
 	color:white;
 	line-height: 35px;
@@ -141,16 +150,31 @@ body {
 #DocumentLoaderNoTab {
 	font-family:montserrat;
 	padding-top:150px;
-	padding-left: 100px;
+	padding-left: 164px;
+}
+#TemplaterLoaderNoTab {
+	font-family:montserrat;
+	padding-top:150px;
+	padding-left: 164px;
 }
 #TemplaterLoaderBox {
 	height:300px;
+	margin-left:15px;
 	width: 500px;
 	background-color:white;
 	position:absolute;
-	top:60px;
-	left:315px;
+	top:85px;
 	width:600px;
 	border-radius:3px;
 	border: 1px solid black;
+}
+#TemplateLoaderSpan {
+	font-family: Montserrat;
+	font-size: 20px;
+	position: absolute;
+	bottom:300px;
+	left:0px
+}
+#aTemplate {
+	padding-top:150px;
 }
