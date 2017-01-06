@@ -9,7 +9,7 @@ class DocumentsLoader extends Component {
 		const SavedDocuments = {
 		  "Soil Report": [ 
 			  { name: "SoilReportDay4", url: "https://ecobind.000webhostapp.com/testDoc.doc" },
-			  { name: "SoilReportDay5", url: "https://ecobind.000webhostapp.com/testDoc.doc" } 
+			  { name: "SoilReportDay5", url: "https://ecobind.000webhostapp.com/LoremIpsum.odt" } 
 		 	],
 		  Safety: [
 		  	{ name: "Safety Hazards", url: "https://ecobind.000webhostappp.com/safetyhazards2016.doc"}
