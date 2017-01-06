@@ -18,7 +18,7 @@ class DocumentsLoader extends Component {
 	
 		return SavedDocuments[currentSubTab].map((doc, index) => {
 			return (
-				<div key={index}>
+				<div key={doc.name}>
 					<DocumentsLoaderItem key={index} name={doc.name} url={doc.url} handleClick={(url) => this.props.selectDocument(url)}/>
 				</div>
 			)
