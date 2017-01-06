@@ -2,57 +2,67 @@
 	box-sizing:border-box;
 }
 body {
-	background-color: #ccc;
+	background-color: #373737;
 }
 #NavBar {
+	padding-top:34px;
 	position:fixed;
 	top: 0px;
 	left: 0px;
 	bottom: 0px;
 	width: 150px;
+	height:100%;
 	border-right: 1px solid black;
-	background-color: #1e3d6d;
+	background-color: #c13030;
 }
 #NavBarLi {
 	text-align: center;
-	padding-bottom: 5px;
+	padding-bottom: 10px;
+	padding-top:10px;
 	list-style: none;
 	color: white;
 	font-family: Montserrat;
+}
+#NavBarLi:hover {
+	background-color:black;
+	cursor:pointer;
 }
 #NavBarUl {
 	padding:0;
 }
 #SubNavBar {
+	padding-top:50px;
 	position: absolute;
-	background-color: #3077e6;
+	background-color: #373737;
 	left: 150px;
 	top: 0px;
 	width:150px;
 	height: 100%;
-	border-right: 1px solid black;
 }
 #SubNavBarLi {
 	list-style: none;
-	padding-bottom: 5px;
+	padding-top:10px;
+	padding-bottom: 10px;
 	font-family: Montserrat;
 	color: white;
+}
+#SubNavBarLi:hover {
+	background-color:#c13030;
+	cursor:pointer;
 }
 #SubNavBarUl {
 	text-align:center;
 	padding: 0;
 }
 #DocumentLoaderBox {
-	margin-left: 50px;
-	margin-right:50px;
+	margin-left: 15px;
+	margin-bottom:15px;
 	background-color: white;
-	padding-top:40px;
 	position: absolute;
-	left: 300px;
 	bottom:0px;
-	margin-bottom: 30px;
-	height: 500px;
-	width:450px;
+	height: 400px;
+	padding-top:25px;
+	width:600px;
 	border-radius:3px;
 	border: 1px solid black;
 }
@@ -60,8 +70,8 @@ body {
 	font-family: Montserrat;
 	font-size: 20px;
 	position: absolute;
-	bottom:435px;
-	left:350px;
+	bottom:400px;
+	left:0px
 }
 #DocumentMenuBar {
 	position: absolute;
@@ -69,7 +79,7 @@ body {
 	left:0px;
 	right:0px;
 	height:35px;
-	background-color: #1992cc;
+	background-color: #c13030;
 	border-bottom: 1px solid black;
 }
 #PreviewiFrame {
@@ -77,6 +87,7 @@ body {
 	position:absolute;
 	right: 0px;
 	top: 0px;
+	width:1000px;
 	border:none;
 	height: 100vh;
 }
@@ -97,5 +108,37 @@ body {
 }
 #aDocument {
 	float:left;
-	padding-left:10px;
+	padding-right:10px;
+}
+#DocumentManager {
+	padding-top:50px;
+	height:100%;
+	background-color:white;
+	position:absolute;
+	top:0px;
+	left:300px;
+	width:630px;
+}
+#BannerBar {
+   position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 50px;
+  background-color: #c13030;
+  z-index: 1;
+  margin-bottom: 50px;
+}
+#BannerBarLogo {
+	padding-left:13px;
+	font-family:montserrat;
+	color:white;
+	text-decoration:underline;
+	font-size: 30px;
+	line-height:50px;
+}
+#DocumentLoaderNoTab {
+	font-family:montserrat;
+	padding-top:150px;
+	padding-left: 100px;
 }

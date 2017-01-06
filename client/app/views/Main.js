@@ -7,11 +7,16 @@ class Main extends Component {
   render() {
     return (
     	<div>
+            <div id="BannerBar">
+              <span id="BannerBarLogo"> EcoBind </span>
+            </div>
     		<div id="NavBarContainer">
     			<NavBar id="NavBar"/>
     		</div>
     		<SubNavBar/>
-    		<DocumentLoader/>
+            <div id="DocumentManager">
+    		  <DocumentLoader/>
+            </div>
     		<DocumentPreview/>
     	</div>
     );

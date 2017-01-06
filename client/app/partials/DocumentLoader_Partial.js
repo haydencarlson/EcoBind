@@ -4,14 +4,11 @@ import OpenDocumentMenu from '../containers/OpenDocumentMenu.js';
 class DocumentLoader_Partial extends Component {
   render() {
     return (
-    	<div id="DocumentLoader">
-    		<span id="DocumentLoaderSpan"> Documents </span>
-
-	      <div id="DocumentLoaderBox">
-	      	<OpenDocumentMenu/>
-	      	<DocumentsLoader/>
-	      </div>
-      </div>
+			<div id="DocumentLoaderBox">
+	    	<span id="DocumentLoaderSpan">Documents</span>
+	    	<OpenDocumentMenu/>
+	    	<DocumentsLoader/>
+	    </div>
     );
   };
 };

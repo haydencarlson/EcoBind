@@ -4,7 +4,10 @@ import { Link } from 'react-router';
 import * as actions from '../actions/index.js';
 import NavBarListItem from '../components/NavBarListItem.js';
 class NavBarList extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {ActiveTab: 'active'}
+  }
   renderList() {
     const NavItems = [
       "Information", 

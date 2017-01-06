@@ -34,8 +34,8 @@ class DocumentsLoader extends Component {
     	)
   	} else {
   		return (
-  			<div>
-
+  			<div id="DocumentLoaderNoTab">
+  			Open a Tab to view documents for that section
   			</div>
   		)
   	}
