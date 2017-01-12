@@ -4,18 +4,20 @@ import { Link } from 'react-router';
 import * as actions from '../actions/index.js';
 import DocumentsLoaderItem from '../components/DocumentsLoaderItem.js';
 class DocumentsLoader extends Component {
-
+	openDocument(URLtoOpen) {
+		console.log(URLtoOpen);
+			window.open(URLtoOpen); 
+		}
 	renderSavedDocs(currentSubTab) {
 		const SavedDocuments = {
 		  "Soil Report": [ 
-			  { name: "SoilReportDay4", url: "https://ecobind.000webhostapp.com/testDoc.doc" },
+			  { name: "SoilReportDay4", url: "https://ecobind.000webhostapp.com/testDoc" },
 			  { name: "SoilReportDay5", url: "https://ecobind.000webhostapp.com/LoremIpsum.odt" } 
 		 	],
 		  Safety: [
 		  	{ name: "Safety Hazards", url: "https://ecobind.000webhostappp.com/safetyhazards2016.doc"}
 		  ]
 		}
-	
 		return SavedDocuments[currentSubTab].map((doc, index) => {
 			return (
 				<div key={doc.name}>
@@ -24,6 +26,7 @@ class DocumentsLoader extends Component {
 			)
 		});
 	}
+
 
   render() {
   	if (this.props.currentSubTab != "") {

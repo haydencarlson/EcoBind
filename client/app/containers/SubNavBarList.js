@@ -15,9 +15,15 @@ class SubNavBarList extends Component {
     }
   
     return Data[currentTab].map((item, index) => {
-      return (
-        <SubNavBarListItem key={index} SubNavItemName={item} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
-      )
+      if (item === this.props.currentSubTab) {
+        return (
+          <SubNavBarListItem SubNavStyle="subNavActive" key={index} SubNavItemName={item} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
+        )
+      } else {
+        return (
+          <SubNavBarListItem key={index} SubNavItemName={item} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
+        )
+      }
     });  
   }
 
@@ -40,7 +46,8 @@ class SubNavBarList extends Component {
 
 const mapStateToProps = function (state) {
     return ({
-      currentTab: state.changeTab
+      currentTab: state.changeTab,
+      currentSubTab: state.changeSubTab
     });
   }
 

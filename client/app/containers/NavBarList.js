@@ -8,18 +8,25 @@ class NavBarList extends Component {
     super(props);
     this.state = {ActiveTab: 'active'}
   }
+  
   renderList() {
     const NavItems = [
-      "Information", 
-      "Financial", 
-      "Contracts", 
-      "Schedule"
+     { name: "Information" }, 
+     { name:"Financial" }, 
+     { name:"Contracts" }, 
+     { name: "Schedule" }
     ];
 
     return NavItems.map((item, index) => {
-      return (
-        <NavBarListItem key={index} NavItemName={item} handleClick={(tab) => this.props.changeTab(tab)} />
-      )
+      if (this.props.currentTab === item.name) {
+        return (
+          <NavBarListItem NavBarStyle="activeTab" key={index} NavItemName={item.name} handleClick={(tab) => this.props.changeTab(tab)} />
+        )
+      } else {
+        return (
+          <NavBarListItem key={index} NavItemName={item.name} handleClick={(tab) => this.props.changeTab(tab)} />
+        )
+      }
     });
   }
 
