@@ -184,3 +184,13 @@ body {
 .subNavActive {
 	background-color:#1e527d;
 }
+.AddTabInput {
+	width:100%;
+	text-align:center;
+}
+.AddTabForm {
+	margin-top: 30px;
+}
+.AddTabButton {
+	width:100%;
+}

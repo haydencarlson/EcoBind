@@ -3,28 +3,25 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router';
 import * as actions from '../actions/index.js';
 import NavBarListItem from '../components/NavBarListItem.js';
+
 class NavBarList extends Component {
   constructor(props) {
     super(props);
     this.state = {ActiveTab: 'active'}
   }
+  componentWillMount() {
+    this.props.getTabs();
+  }
   
-  renderList() {
-    const NavItems = [
-     { name: "Information" }, 
-     { name:"Financial" }, 
-     { name:"Contracts" }, 
-     { name: "Schedule" }
-    ];
-
-    return NavItems.map((item, index) => {
+  renderList(allTabs) {
+    return allTabs.map((item, index) => {
       if (this.props.currentTab === item.name) {
         return (
-          <NavBarListItem NavBarStyle="activeTab" key={index} NavItemName={item.name} handleClick={(tab) => this.props.changeTab(tab)} />
+          <NavBarListItem NavBarStyle="activeTab" key={index} NavItemName={item.tabName} handleClick={(tab) => this.props.changeTab(tab)} />
         )
       } else {
         return (
-          <NavBarListItem key={index} NavItemName={item.name} handleClick={(tab) => this.props.changeTab(tab)} />
+          <NavBarListItem key={index} NavItemName={item.tabName} handleClick={(tab) => this.props.changeTab(tab)} />
         )
       }
     });
@@ -33,7 +30,8 @@ class NavBarList extends Component {
   render() {
     return (
       <ul id="NavBarUl">
-        {this.renderList()}
+        {this.renderList(this.props.allTabs)}
+
       </ul>
     )
   };
@@ -41,7 +39,8 @@ class NavBarList extends Component {
   
   const mapStateToProps = function (state) {
     return ({
-      currentTab: state.changeTab
+      currentTab: state.changeTab,
+      allTabs: state.getTabs
     });
   }
 
@@ -49,6 +48,9 @@ class NavBarList extends Component {
     return {
       changeTab: (tab) => {
         dispatch(actions.changeTab(tab));
+      },
+      getTabs: (tabs) => {
+        dispatch(actions.getTabs(tabs));
       }
     }
   }

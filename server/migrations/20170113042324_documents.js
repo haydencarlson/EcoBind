@@ -4,6 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('documentUrl');
     table.string('title');
+    table.integer('subNavTabs_id').unsigned();
+    table.foreign('subNavTabs_id').references('subNavTabs.id')
   })
 };
 
