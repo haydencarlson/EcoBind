@@ -5,6 +5,9 @@ import * as actions from '../actions/index.js';
 import SubNavBarListItem from '../components/SubNavBarListItem.js';
 
 class SubNavBarList extends Component {
+  componentWillMount() {
+    this.props.getSubTabs();
+  }
 
   renderList(currentTab) {
     var Data = {
@@ -47,7 +50,9 @@ class SubNavBarList extends Component {
 const mapStateToProps = function (state) {
     return ({
       currentTab: state.changeTab,
-      currentSubTab: state.changeSubTab
+      currentSubTab: state.changeSubTab,
+      allSubTabs: state.getSubTabs
+
     });
   }
 
@@ -55,6 +60,9 @@ const mapDispatchToProps = function (dispatch) {
   return {
     changeSubTab: (subTab) => {
       dispatch(actions.changeSubTab(subTab));
+    },
+    getSubTabs: (tabs) => {
+      dispatch(actions.getSubTabs(tabs));
     }
   }
 }

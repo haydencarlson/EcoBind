@@ -1,3 +1,7 @@
 export const TYPE_CHANGE_TAB = "TYPE_CHANGE_TAB";
 export const TYPE_CHANGE_SUB_TAB = "TYPE_CHANGE_SUB_TAB";
 export const TYPE_SELECT_DOCUMENT = "TYPE_SELECT_DOCUMENT";
+export const TYPE_NEW_TAB = "TYPE_NEW_TAB";
+export const TYPE_ADD_TAB = "TYPE_ADD_TAB";
+export const TYPE_GET_TABS = "TYPE_GET_TABS";
+export const TYPE_GET_SUB_TABS = "TYPE_GET_TABS";
