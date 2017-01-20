@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('tabName');
     table.integer('mainNavTab_id').unsigned();
-    table.foreign('mainNavTab_id').references('subNavTabs.id');
+    table.foreign('mainNavTab_id').references('mainNavTabs.id');
   })
 };
 

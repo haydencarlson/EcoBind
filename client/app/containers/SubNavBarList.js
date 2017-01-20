@@ -6,44 +6,30 @@ import SubNavBarListItem from '../components/SubNavBarListItem.js';
 
 class SubNavBarList extends Component {
   componentWillMount() {
-    this.props.getSubTabs();
+    this.props.getSubTabs(this.props.currentTab);
   }
 
-  renderList(currentTab) {
-    var Data = {
-      Information: [ "Safety", "Soil Report", "Pipelines", "Irrigation" ],
-      Financial: [ "Salary", "Hours" ],
-      Contracts: [ "People", "Contracts" ],
-      Schedule: [ "Scheduled Hours", "Holidays" ]
-    }
-  
-    return Data[currentTab].map((item, index) => {
-      if (item === this.props.currentSubTab) {
+  renderList(allSubTabs) {
+    console.log(allSubTabs);
+    return allSubTabs.map((item, index) => {
+      if (this.props.currentSubTab === item.tabName) {
         return (
-          <SubNavBarListItem SubNavStyle="subNavActive" key={index} SubNavItemName={item} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
+          <SubNavBarListItem SubNavStyle="subNavActive" key={index} onClick={this.props.getDocuments(this.props.currentSubTab)} SubNavItemName={item.tabName} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
         )
       } else {
         return (
-          <SubNavBarListItem key={index} SubNavItemName={item} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
+          <SubNavBarListItem key={index} SubNavItemName={item.tabName} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
         )
       }
     });  
   }
 
   render() {
-    if (this.props.currentTab != "") {
-      return (
-        <ul id="SubNavBarUl">
-          {this.renderList(this.props.currentTab)}
-        </ul>
-      )
-    } else {
-        return (
-          <ul>
-
-          </ul>
-        )
-      }
+    return (
+      <ul id="SubNavBarUl">
+        {this.renderList(this.props.allSubTabs)}
+      </ul>
+    )
   };
 };
 
@@ -52,7 +38,6 @@ const mapStateToProps = function (state) {
       currentTab: state.changeTab,
       currentSubTab: state.changeSubTab,
       allSubTabs: state.getSubTabs
-
     });
   }
 
@@ -63,6 +48,9 @@ const mapDispatchToProps = function (dispatch) {
     },
     getSubTabs: (tabs) => {
       dispatch(actions.getSubTabs(tabs));
+    },
+    getDocuments: (docs) => {
+      dispatch(actions.getDocuments(docs));
     }
   }
 }

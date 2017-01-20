@@ -192,5 +192,12 @@ body {
 	margin-top: 30px;
 }
 .AddTabButton {
+	width:100%
+	;
+}
+.AddSubTabInput {
+	width:100%;
+}
+.AddSubTabButton {
 	width:100%;
 }

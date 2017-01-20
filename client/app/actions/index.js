@@ -2,5 +2,8 @@ export changeTab from './changeNavBarTab.js';
 export changeSubTab from './changeSubNavBarTab.js';
 export selectDocument from './selectDocument.js';
 export addNewTab from './addNewTab.js';
+export addNewSubTab from './addNewSubTab.js';
 export getTabs from './getTabs.js';
 export getSubTabs from './getSubTabs.js';
+export getDocuments from './getDocuments.js';
+export renderApp from './renderApp.js';

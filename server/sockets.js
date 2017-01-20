@@ -32,15 +32,22 @@ module.exports = function(io) {
         break;
 
         case 'socket/TYPE_NEW_SUB_TAB':
-        	knex('subNavTabs')
-        		.insert({tabName: action.payload})
-        		.then((result) => {
+          knex.select('id')
+          .from('mainNavTabs')
+          .where({tabName: action.payload.currentTab})
+          .then((mainNavTabId) => {
+            knex('subNavTabs')
+        		.insert({tabName: action.payload.newTabName, mainNavTab_id: mainNavTabId[0].id})
+            .returning('mainNavTab_id')
+        		.then((mainNavTabId) => {
         			knex.select("tabName")
-        				.from("subNavTabs")
-        				.then((result) => {
-        					emitAction('TYPE_GET_SUB_TABS', result);
-        				});
+        			.from("subNavTabs")
+              .where({mainNavTab_id: mainNavTabId[0]})
+        			.then((result) => {
+        			 emitAction('TYPE_GET_SUB_TABS', result);
+        			});
         		});
+          });
         break;
 
         case 'socket/TYPE_GET_TABS':
@@ -52,11 +59,32 @@ module.exports = function(io) {
         break;
 
         case 'socket/TYPE_GET_SUB_TABS':
-        	knex.select("tabName")
-        		.from("subNavTabs")
-        		.then((result) => {
-        			emitAction('TYPE_GET_SUB_TABS', result);
-        		});
+          knex.select('id')
+          .from('mainNavTabs')
+          .where({tabName: action.payload})
+          .then((mainNavTabId) => {
+            knex.select("tabName")
+            .from("subNavTabs")
+            .where({mainNavTab_id: mainNavTabId[0].id})
+            .then((result) => {
+             emitAction('TYPE_GET_SUB_TABS', result);
+            });
+          });
+        break;
+
+        case 'socket/TYPE_GET_DOCUMENTS':
+          knex.select('id')
+          .from('subNavTabs')
+          .where({tabName: action.payload})
+          .then((id) => {
+            knex.select("*")
+            .from("documents")
+            .where({subNavTabs_id: id[0].id})
+            .then((result) => {
+              console.log("result", result);
+              emitAction('TYPE_GET_DOCUMENTS', result);
+            });
+          });
         break;
       }
     });

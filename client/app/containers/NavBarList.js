@@ -5,19 +5,15 @@ import * as actions from '../actions/index.js';
 import NavBarListItem from '../components/NavBarListItem.js';
 
 class NavBarList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {ActiveTab: 'active'}
-  }
   componentWillMount() {
     this.props.getTabs();
   }
-  
+
   renderList(allTabs) {
     return allTabs.map((item, index) => {
-      if (this.props.currentTab === item.name) {
+      if (this.props.currentTab === item.tabName) {
         return (
-          <NavBarListItem NavBarStyle="activeTab" key={index} NavItemName={item.tabName} handleClick={(tab) => this.props.changeTab(tab)} />
+          <NavBarListItem NavBarStyle="activeTab" key={index} onClick={this.props.getSubTabs(this.props.currentTab)} NavItemName={item.tabName} handleClick={(tab) => this.props.changeTab(tab)} />
         )
       } else {
         return (
@@ -31,7 +27,6 @@ class NavBarList extends Component {
     return (
       <ul id="NavBarUl">
         {this.renderList(this.props.allTabs)}
-
       </ul>
     )
   };
@@ -51,6 +46,9 @@ class NavBarList extends Component {
       },
       getTabs: (tabs) => {
         dispatch(actions.getTabs(tabs));
+      },
+      getSubTabs: (tabs) => {
+        dispatch(actions.getSubTabs(tabs));
       }
     }
   }

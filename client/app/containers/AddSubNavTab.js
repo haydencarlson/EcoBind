@@ -13,18 +13,25 @@ class AddSubNavTab extends Component {
 	}
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.addNewSubTab(this.state.newTab);
+		this.props.addNewSubTab({newTabName:this.state.newSubTab, currentTab: this.props.currentTab});
 		this.setState({neSubTab: ''});
 	}
   render() {
   	return (
 	  	<form className="AddSubTabForm" onSubmit={this.handleSubmit.bind(this)}>
-				<input type="text" onChange={this.handleInputChange} value={this.state.newTab} className="AddSubTabInput" placeholder="Sub Tab Name" />
+				<input type="text" onChange={this.handleInputChange} value={this.state.newSubTab} className="AddSubTabInput" placeholder="Sub Tab Name" />
 				<button className="AddSubTabButton">Add Tab</button>		
 			</form>
 		)
   };
 };
+
+const mapStateToProps = function (state) {
+  return ({
+    currentTab: state.changeTab
+  });
+ }
+
 const mapDispatchToProps = function (dispatch) {
 	return {
 		addNewSubTab: (tab) => {
@@ -34,4 +41,4 @@ const mapDispatchToProps = function (dispatch) {
 	}
 }
 
-export default connect(null, mapDispatchToProps)(AddSubNavTab);
+export default connect(mapStateToProps, mapDispatchToProps)(AddSubNavTab);
