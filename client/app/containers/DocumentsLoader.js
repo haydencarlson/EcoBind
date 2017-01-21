@@ -25,17 +25,23 @@ class DocumentsLoader extends Component {
 	}
 
 	onDrop (docFile) {
-		console.log(docFile);
+		var subTabId;
+		this.props.allSubTabs.forEach((item, index) => {
+			if (this.props.currentSubTab === item.tabName) {
+				subTabId = item.id;
+			}
+		});
     const data = new FormData();
     data.append('action', 'ADD');
     data.append('param', 0);
     data.append('secondParam', 0);
-    data.append('currentSubTab', this.props.currentSubTab);
+    data.append('subTabId', subTabId);
     data.append('fileName', docFile[0].name)
     data.append('file', new Blob(docFile, { type: docFile[0].type}));
 
     axios.post('http://localhost:3000/dropzone', data).then((doc_url) => {
       this.setState({ doc_url: doc_url.data });
+      console.log("doc url", doc_url.data);
 		
     }).catch((error) => {
     	console.log("Error! Please try to upload again");
@@ -45,7 +51,7 @@ class DocumentsLoader extends Component {
   render() {
   	if (this.props.currentSubTab != "") {
   		return (
-  			<Dropzone style={{"width":"100%", "height": "100%","borderWidth": "2px", "borderColor": "#666", "borderStyle": "dashed", "borderRadius": "5px"}} activeStyle={{"width":"100%", "height": "100%","borderWidth": "2px", "borderColor": "#666", "borderStyle": "dashed", "borderRadius": "5px", "backgroundColor" : "rgb(238,238,238)"}} disableClick="true" onDrop={this.onDrop.bind(this)} multiple={false} accept={'application/*'}>
+  			<Dropzone style={{"width":"100%", "height": "100%","borderWidth": "2px", "borderColor": "#666", "borderStyle": "dashed", "borderRadius": "5px"}} activeStyle={{"width":"100%", "height": "100%","borderWidth": "2px", "borderColor": "#666", "borderStyle": "dashed", "borderRadius": "5px", "backgroundColor" : "rgb(238,238,238)"}} disableClick={true} onDrop={this.onDrop.bind(this)} multiple={false} accept={'application/*'}>
 	     		<div>
 	      		{this.renderSavedDocs(this.props.allDocuments)}
 	      	</div>
@@ -76,7 +82,8 @@ const mapDispatchToProps = function (dispatch) {
 const mapStateToProps = function (state) {
   return ({
     currentSubTab: state.changeSubTab,
-    allDocuments: state.getDocuments
+    allDocuments: state.getDocuments,
+    allSubTabs: state.getSubTabs
   });
  }
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentsLoader);

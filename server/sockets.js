@@ -63,10 +63,11 @@ module.exports = function(io) {
           .from('mainNavTabs')
           .where({tabName: action.payload})
           .then((mainNavTabId) => {
-            knex.select("tabName")
+            knex.select("tabName", "id")
             .from("subNavTabs")
             .where({mainNavTab_id: mainNavTabId[0].id})
             .then((result) => {
+              console.log("result from tabs", result);
              emitAction('TYPE_GET_SUB_TABS', result);
             });
           });
@@ -81,7 +82,6 @@ module.exports = function(io) {
             .from("documents")
             .where({subNavTabs_id: id[0].id})
             .then((result) => {
-              console.log("result", result);
               emitAction('TYPE_GET_DOCUMENTS', result);
             });
           });
