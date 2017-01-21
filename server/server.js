@@ -3,13 +3,16 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server, {'reconnection': true});
 const socket_server = require('./sockets')(io);
 const multer = require('multer');
+const crypto = require('crypto');
+const mime = require('mime');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './public/images/')
+    cb(null, './')
   },
   filename: function (req, file, cb) {
     crypto.pseudoRandomBytes(16, function (err, raw) {
+    	console.log("file",file);
       cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
     });
   }
@@ -24,8 +27,8 @@ app.use('/', function(req, res, next) {
   next();
 });
 
-app.post('/dropzone', function(req, res) {
-	console.log(req)
+app.post('/dropzone', upload.single('file'), function(req, res) {
+	console.log(req);
 });
 
 server.listen(3000, (err) => {

@@ -201,3 +201,11 @@ body {
 .AddSubTabButton {
 	width:100%;
 }
+.Dropzone {
+  width: 200px;
+  height: 200px;
+  border-width: 2px;
+  border-color: #666;
+  border-style: dashed;
+  border-radius: 5px;	
+}

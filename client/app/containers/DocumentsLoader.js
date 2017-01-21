@@ -24,38 +24,39 @@ class DocumentsLoader extends Component {
 		});
 	}
 
-	onDrop (imageFile) {
+	onDrop (docFile) {
+		console.log(docFile);
     const data = new FormData();
     data.append('action', 'ADD');
     data.append('param', 0);
     data.append('secondParam', 0);
-    data.append('file', new Blob(imageFile, { type: 'image/jpeg' }));
+    data.append('currentSubTab', this.props.currentSubTab);
+    data.append('fileName', docFile[0].name)
+    data.append('file', new Blob(docFile, { type: docFile[0].type}));
 
     axios.post('http://localhost:3000/dropzone', data).then((doc_url) => {
       this.setState({ doc_url: doc_url.data });
-      console.log(this.state.doc_url);
-      this.set_uploadStatus("COMPLETE");
+		
     }).catch((error) => {
-      console.log(error);
-      this.set_uploadStatus("ERROR");
+    	console.log("Error! Please try to upload again");
     });
   }
 
   render() {
   	if (this.props.currentSubTab != "") {
   		return (
-	      <div>
-	      	{this.renderSavedDocs(this.props.allDocuments)}
-	      </div>
+  			<Dropzone style={{"width":"100%", "height": "100%","borderWidth": "2px", "borderColor": "#666", "borderStyle": "dashed", "borderRadius": "5px"}} activeStyle={{"width":"100%", "height": "100%","borderWidth": "2px", "borderColor": "#666", "borderStyle": "dashed", "borderRadius": "5px", "backgroundColor" : "rgb(238,238,238)"}} disableClick="true" onDrop={this.onDrop.bind(this)} multiple={false} accept={'application/*'}>
+	     		<div>
+	      		{this.renderSavedDocs(this.props.allDocuments)}
+	      	</div>
+	      </Dropzone>
 	      
     	)
   	} else {
   		return (
-  			<Dropzone onDrop={this.onDrop.bind(this)} multiple={false} accept={'image/*'}>
-	  			<div id="DocumentLoaderNoTab">
-	  				<span>Open a Tab to view documents</span>
-	  			</div>
-  			</Dropzone>
+  			<div id="DocumentLoaderNoTab">
+  				<span>Open a Tab to view documents</span>
+  			</div>
   		)
   	}
   };
