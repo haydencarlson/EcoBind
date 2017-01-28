@@ -10,7 +10,7 @@ class SubNavBarList extends Component {
   }
 
   renderList(allSubTabs) {
-    console.log(allSubTabs);
+    console.log("here",allSubTabs);
     return allSubTabs.map((item, index) => {
       if (this.props.currentSubTab === item.tabName) {
         return (

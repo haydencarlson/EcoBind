@@ -202,8 +202,8 @@ body {
 	width:100%;
 }
 .Dropzone {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   border-width: 2px;
   border-color: #666;
   border-style: dashed;

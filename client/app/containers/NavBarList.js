@@ -17,7 +17,7 @@ class NavBarList extends Component {
         )
       } else {
         return (
-          <NavBarListItem key={index} NavItemName={item.tabName} handleClick={(tab) => this.props.changeTab(tab)} />
+          <NavBarListItem key={index} NavItemName={item.tabName} onClick={this.props.getSubTabs(this.props.currentTab)} handleClick={(tab) => this.props.changeTab(tab)} />
         )
       }
     });

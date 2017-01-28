@@ -39,8 +39,9 @@ app.use('/', function(req, res, next) {
 });
 
 app.post('/dropzone', upload.single('file'), function(req, res) {
-	var docName = (req.body.fileName);
-	var docUrl = ("http://localhost:3000/" + req.file.path);
+	const docName = (req.body.fileName);
+  console.log("docname", docName);
+  const docUrl = ("http://localhost:3000/" + req.file.path);
 	res.send(docUrl);
 	knex('documents')
 	.insert({documentUrl: docUrl, title: docName, subNavTabs_id: req.body.subTabId})

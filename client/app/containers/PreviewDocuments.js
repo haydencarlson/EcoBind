@@ -8,7 +8,6 @@ class DocumentsLoader extends Component {
 	renderPreviewDoc(currentSubTab) {
 		
 		return SavedDocuments[currentSubTab].map((doc, index) => {
-			console.log("doc",doc);
 			return (
 				<div>
 					<DocumentsLoaderItem key={index} name={doc.name} url={doc.url}/>

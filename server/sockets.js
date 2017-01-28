@@ -44,6 +44,7 @@ module.exports = function(io) {
         			.from("subNavTabs")
               .where({mainNavTab_id: mainNavTabId[0]})
         			.then((result) => {
+                console.log("here", result);
         			 emitAction('TYPE_GET_SUB_TABS', result);
         			});
         		});
@@ -63,13 +64,13 @@ module.exports = function(io) {
           .from('mainNavTabs')
           .where({tabName: action.payload})
           .then((mainNavTabId) => {
+            console.log(mainNavTabId[0]);
             knex.select("tabName", "id")
             .from("subNavTabs")
             .where({mainNavTab_id: mainNavTabId[0].id})
             .then((result) => {
-              console.log("result from tabs", result);
              emitAction('TYPE_GET_SUB_TABS', result);
-            });
+           });
           });
         break;
 
@@ -85,6 +86,10 @@ module.exports = function(io) {
               emitAction('TYPE_GET_DOCUMENTS', result);
             });
           });
+        break;
+
+        case 'socket/TYPE_POST_FILE_DATABASE':
+          console.log("file file file", action.payload);
         break;
       }
     });

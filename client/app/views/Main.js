@@ -17,9 +17,9 @@ class Main extends Component {
     		<SubNavBar/>
         <div id="DocumentManager">
         	<TemplateLoader/>
-		      <DocumentLoader/>
+          <DocumentLoader/>
         </div>
-    		<DocumentPreview/>
+    	   <DocumentPreview/>
     	</div>
     );
   };

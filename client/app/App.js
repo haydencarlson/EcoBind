@@ -2,28 +2,23 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
 import { Router, Route, hashHistory } from 'react-router';
+import * as actions from './actions/index.js';
 import Main from "./views/Main.js";
 
 class App extends Component {
 
   render() {
-  	if (this.props.renderApp === true) {
-  		return (
-  			<div> Loading.....</div>
-  		)
-  	} else {
-	    return (
-	      <Router history={hashHistory}>
-	      <Route path="/" component={Main}/>
-	      </Router>
-	    )
-  	}
+    return (
+      <Router history={hashHistory}>
+      <Route path="/" component={Main}/>
+      </Router>
+    )
   };
 }
 
 function mapStateToProps(state) {
   return ({
-    renderApp: state.renderApp
+    currentTab: state.changeTab
   });
 };
 
