@@ -100,10 +100,13 @@ module.exports = function(io) {
             .where({tabName: action.payload})
             .del()
             .then((result) => {
-              console.log(result);
+              knex.select("tabName")
+                .from("mainNavTabs")
+                .then((result) => {
+              emitAction('TYPE_GET_TABS', result);
+              });
             });
         break;
-      
       }
     });
   });
