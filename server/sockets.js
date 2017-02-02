@@ -95,6 +95,14 @@ module.exports = function(io) {
               console.log(result);
             });
         break;
+        case 'socket/TYPE_DELETE_TAB':
+          knex('mainNavTabs')
+            .where({tabName: action.payload})
+            .del()
+            .then((result) => {
+              console.log(result);
+            });
+        break;
       
       }
     });

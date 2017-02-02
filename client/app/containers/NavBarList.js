@@ -13,7 +13,7 @@ class NavBarList extends Component {
     return allTabs.map((item, index) => {
       if (this.props.currentTab === item.tabName) {
         return (
-          <NavBarListItem NavBarStyle="activeTab" key={index} onClick={this.props.getSubTabs(this.props.currentTab)} NavItemName={item.tabName} handleClick={(tab) => this.props.changeTab(tab)} />
+          <NavBarListItem NavBarStyle="activeTab" key={index} handleDelete={(tab) => this.props.deleteTab(tab)} onClick={this.props.getSubTabs(this.props.currentTab)} NavItemName={item.tabName} handleClick={(tab) => this.props.changeTab(tab)} />
         )
       } else {
         return (
@@ -49,6 +49,9 @@ class NavBarList extends Component {
       },
       getSubTabs: (tabs) => {
         dispatch(actions.getSubTabs(tabs));
+      },
+      deleteTab: (tab) => {
+        dispatch(actions.deleteTab(tab));
       }
     }
   }
