@@ -88,11 +88,23 @@ module.exports = function(io) {
           });
         break;
         case 'socket/TYPE_DELETE_SUB_TAB':
+        console.log("payload",action.payload);
           knex('subNavTabs')
-            .where({tabName: action.payload})
+            .where({tabName: action.payload.subTab})
             .del()
             .then((result) => {
-              console.log(result);
+              knex.select('id')
+                .from('mainNavTabs')
+                .where({tabName: action.payload.mainTab})
+                  .then((mainNavTabId) => {
+              console.log(mainNavTabId[0]);
+              knex.select("tabName", "id")
+                .from("subNavTabs")
+                .where({mainNavTab_id: mainNavTabId[0].id})
+                .then((result) => {
+              emitAction('TYPE_GET_SUB_TABS', result);
+           });
+          });
             });
         break;
         case 'socket/TYPE_DELETE_TAB':
