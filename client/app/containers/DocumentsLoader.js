@@ -33,9 +33,6 @@ class DocumentsLoader extends Component {
 				subTabId = item.id;
 			}
 		});
-		var fileData = {
-
-		}
     const data = new FormData();
     data.append('action', 'ADD');
     data.append('param', 0);
@@ -43,9 +40,9 @@ class DocumentsLoader extends Component {
     data.append('subTabId', subTabId);
     data.append('fileName', docFile[0].name)
     data.append('file', new Blob(docFile, { type: docFile[0].type}));
-    this.props.postFile(data);
     axios.post('http://localhost:3000/dropzone', data).then((doc_url) => {
 			console.log("Sent doc to server");
+			console.log('dat data data', doc_url);
     }).catch((error) => {
     	console.log("Error! Please try to upload again");
     });

@@ -14,7 +14,7 @@ class SubNavBarList extends Component {
     return allSubTabs.map((item, index) => {
       if (this.props.currentSubTab === item.tabName) {
         return (
-          <SubNavBarListItem SubNavStyle="subNavActive" key={index} onClick={this.props.getDocuments(this.props.currentSubTab)} SubNavItemName={item.tabName} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
+          <SubNavBarListItem SubNavStyle="subNavActive" key={index} onClick={this.props.getDocuments(this.props.currentSubTab)} handleDelete={(subTab) => this.props.deleteSubTab(subTab)} SubNavItemName={item.tabName} handleClick={(subTab) => this.props.changeSubTab(subTab)} />
         )
       } else {
         return (
@@ -51,6 +51,9 @@ const mapDispatchToProps = function (dispatch) {
     },
     getDocuments: (docs) => {
       dispatch(actions.getDocuments(docs));
+    },
+    deleteSubTab: (subTab) => {
+      dispatch(actions.deleteSubTab(subTab));
     }
   }
 }

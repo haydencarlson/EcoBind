@@ -87,10 +87,15 @@ module.exports = function(io) {
             });
           });
         break;
-
-        case 'socket/TYPE_POST_FILE_DATABASE':
-          console.log("file file file", action.payload);
+        case 'socket/TYPE_DELETE_SUB_TAB':
+          knex('subNavTabs')
+            .where({tabName: action.payload})
+            .del()
+            .then((result) => {
+              console.log(result);
+            });
         break;
+      
       }
     });
   });

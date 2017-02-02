@@ -39,7 +39,7 @@ app.use('/', function(req, res, next) {
 });
 
 app.post('/dropzone', upload.single('file'), function(req, res) {
-	const docName = (req.body.fileName);
+	var docName = (req.body.fileName);
   console.log("docname", docName);
   const docUrl = ("http://localhost:3000/" + req.file.path);
 	res.send(docUrl);
@@ -51,8 +51,8 @@ app.post('/dropzone', upload.single('file'), function(req, res) {
 });
 
 app.get('/public/:docID', function(req, res, next){
-    res.sendFile(path.join(__dirname, `/public/${req.params.docID}`));
-  });
+  res.sendFile(path.join(__dirname, `/public/${req.params.docID}`));
+});
 
 server.listen(3000, (err) => {
   if (err) { console.log(err) };
