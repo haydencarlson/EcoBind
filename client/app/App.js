@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { Router, Route, hashHistory } from 'react-router';
 import * as actions from './actions/index.js';
 import Main from "./views/Main.js";
+import Login from "./views/Login.js"
 
 class App extends Component {
 
@@ -11,6 +12,7 @@ class App extends Component {
     return (
       <Router history={hashHistory}>
       <Route path="/" component={Main}/>
+      <Route path="/login" component={Login}/>
       </Router>
     )
   };
