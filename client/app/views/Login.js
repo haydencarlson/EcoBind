@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Login_Partial from '../partials/LoginBox_Partial.js';
+import LoginComponent from '../components/loginComponent.js';
 class Login extends Component {
   render() {
     return (
     	<div>
-        <Login_Partial/>
+        <LoginComponent/>
     	</div>
     );
   };
