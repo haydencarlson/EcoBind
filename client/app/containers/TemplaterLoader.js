@@ -6,15 +6,7 @@ import TemplatesSavedItem from '../components/TemplatesSavedItem.js';
 class TemplaterLoader extends Component {
 
 	renderTemplates(currentSubTab) {
-		const SavedTemplates = {
-		  "Soil Report": [ 
-			  { name: "Contract Template", url: "https://ecobind.000webhostapp.com/tes" }
-		 	],
-		  Safety: [
-		  	{ name: "Safety Template", url: "https://ecobind.000webhostappp.com/safetyhazards2016.doc"}
-		  ]
-		}
-	
+		
 		return SavedTemplates[currentSubTab].map((template, index) => {
 			return (
 				<div key={index}>
@@ -28,7 +20,7 @@ class TemplaterLoader extends Component {
   	if (this.props.currentSubTab != "") {
   		return (
 	      <div>
-	      	{this.renderTemplates(this.props.currentSubTab)}
+	      	{this.renderTemplates(this.props.tabTemplates)}
 	      </div>
     	)
   	} else {

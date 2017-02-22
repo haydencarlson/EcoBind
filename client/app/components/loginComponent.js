@@ -6,10 +6,14 @@ class loginBox extends Component {
     	<div id="loginForm">
     		<label> Username </label>
     		<input type="text" placeholder="Enter Username"/>
+    		<br/>
     		<label> Password </label>
-    		<input type="text" placehollder="Enter Password"/>
+    		<input type="text" placeholder="Enter Password"/>
+    		<br/>
     		<label> Company Name </label>
     		<input type="text" placeholder="Enter Company Name"/>
+    		<br/>
+    		<button> Login </button>
     	</div>
     );
   };
